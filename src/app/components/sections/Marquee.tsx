@@ -1,7 +1,6 @@
 import { marqueeItems } from "@/app/lib/content";
 
 export function Marquee() {
-  // Duplicate the list once so the 50%-translate loop is seamless.
   const track = [...marqueeItems, ...marqueeItems];
 
   return (

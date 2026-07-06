@@ -3,15 +3,15 @@
 :root {
   --font-size: 16px;
 
-  /* Brand palette — cobalt blue + black/white, taken from the VênusArt mark */
-  --ink: #050608;          /* near-black background */
-  --ink-2: #0b0e14;        /* raised surface on ink */
-  --ink-3: #12161f;        /* card / input surface */
-  --paper: #f5f6f8;        /* off-white */
-  --cobalt: #1e3ee0;       /* primary brand blue (from logo) */
-  --cobalt-light: #4d6bff; /* lighter accent for gradients / hovers */
-  --cobalt-deep: #0d1a5c;  /* deep navy for shadows / duotone */
-  --line: rgba(245, 246, 248, 0.1);   /* hairline borders on dark */
+  
+  --ink: #050608;          
+  --ink-2: #0b0e14;        
+  --ink-3: #12161f;        
+  --paper: #f5f6f8;        
+  --cobalt: #1e3ee0;       
+  --cobalt-light: #4d6bff; 
+  --cobalt-deep: #0d1a5c;  
+  --line: rgba(245, 246, 248, 0.1);   
   --line-strong: rgba(245, 246, 248, 0.22);
 
   --background: var(--ink);
@@ -100,7 +100,7 @@
   .font-body { font-family: var(--font-body); }
   .font-mark { font-family: var(--font-mark); }
 
-  /* Grayscale-to-cobalt duotone treatment used across portfolio + brand photography */
+  
   .duotone {
     filter: grayscale(1) contrast(1.1) brightness(0.9);
     transition: filter 0.5s ease;
@@ -146,7 +146,7 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(30, 62, 224, 0.18);
 }
 
-/* Hero mascot: upper-body crop, fills from top, clips at section boundary */
+
 .hero-mascot {
   position: absolute;
   height: 150%;

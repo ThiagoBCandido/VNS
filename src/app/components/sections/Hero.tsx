@@ -17,15 +17,10 @@ export function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
       style={{ background: "var(--ink)" }}
     >
-
-
-      {/* Cobalt glow */}
       <div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: "var(--cobalt)", opacity: 0.16, filter: "blur(120px)" }}
       />
-
-      {/* Mascot - right side */}
       <div className="absolute pointer-events-none" style={{ top: 0, bottom: 0, right: 0, left: "42%" }}>
         <motion.div
           initial={{ opacity: 0, x: 50, filter: "blur(16px)" }}

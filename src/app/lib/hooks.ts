@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-/**
- * Reveals an element once when it scrolls into view.
- * Uses IntersectionObserver (event-driven, no scroll-polling) and
- * disconnects after the first reveal so it costs nothing afterwards.
- */
+
 export function useReveal<T extends HTMLElement>(threshold = 0.2) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -29,10 +25,6 @@ export function useReveal<T extends HTMLElement>(threshold = 0.2) {
 
   return { ref, inView };
 }
-
-// ── Shared scroll-past-threshold store ──────────────────────────────────────
-// A single passive scroll listener shared by anything that only needs to know
-// whether the page has scrolled past some pixel value (e.g. the nav bar).
 let scrollY = typeof window !== "undefined" ? window.scrollY : 0;
 const listeners = new Set<() => void>();
 let ticking = false;
@@ -58,7 +50,7 @@ function subscribe(fn: () => void) {
   };
 }
 
-/** True once the page has scrolled past `threshold` px. Only re-renders on flip. */
+
 export function useScrollPast(threshold: number) {
   return useSyncExternalStore(
     subscribe,

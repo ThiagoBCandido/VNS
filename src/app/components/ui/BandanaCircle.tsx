@@ -1,9 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 
-/**
- * Circular frame with an optional image clipped to the outer ring, while
- * children stay clipped inside the inner circle.
- */
+
 export function BandanaCircle({
   children,
   size = 360,
