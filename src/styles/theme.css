@@ -1,0 +1,178 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+
+  /* Brand palette — cobalt blue + black/white, taken from the VênusArt mark */
+  --ink: #050608;          /* near-black background */
+  --ink-2: #0b0e14;        /* raised surface on ink */
+  --ink-3: #12161f;        /* card / input surface */
+  --paper: #f5f6f8;        /* off-white */
+  --cobalt: #1e3ee0;       /* primary brand blue (from logo) */
+  --cobalt-light: #4d6bff; /* lighter accent for gradients / hovers */
+  --cobalt-deep: #0d1a5c;  /* deep navy for shadows / duotone */
+  --line: rgba(245, 246, 248, 0.1);   /* hairline borders on dark */
+  --line-strong: rgba(245, 246, 248, 0.22);
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --card: var(--ink-3);
+  --card-foreground: var(--paper);
+  --popover: var(--ink-3);
+  --popover-foreground: var(--paper);
+  --primary: var(--cobalt);
+  --primary-foreground: #ffffff;
+  --secondary: var(--ink-2);
+  --secondary-foreground: var(--paper);
+  --muted: var(--ink-2);
+  --muted-foreground: rgba(245, 246, 248, 0.5);
+  --accent: var(--cobalt-light);
+  --accent-foreground: #ffffff;
+  --destructive: #e0341e;
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--ink-3);
+  --input-background: var(--ink-3);
+  --switch-background: var(--cobalt);
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: rgba(30, 62, 224, 0.5);
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-light: var(--cobalt-light);
+  --color-cobalt-deep: var(--cobalt-deep);
+  --color-line: var(--line);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: "Archivo Black", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-mark: "Permanent Marker", cursive;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-body { font-family: var(--font-body); }
+  .font-mark { font-family: var(--font-mark); }
+
+  /* Grayscale-to-cobalt duotone treatment used across portfolio + brand photography */
+  .duotone {
+    filter: grayscale(1) contrast(1.1) brightness(0.9);
+    transition: filter 0.5s ease;
+  }
+  .group:hover .duotone,
+  .duotone:hover,
+  .duotone-active {
+    filter: grayscale(0) contrast(1.05) brightness(1);
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cobalt);
+}
+::selection {
+  background: rgba(30, 62, 224, 0.4);
+}
+select option {
+  background: var(--ink-3);
+  color: var(--paper);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--cobalt) !important;
+  box-shadow: 0 0 0 2px rgba(30, 62, 224, 0.18);
+}
+
+/* Hero mascot: upper-body crop, fills from top, clips at section boundary */
+.hero-mascot {
+  position: absolute;
+  height: 150%;
+  width: auto;
+  top: 0;
+  right: -4%;
+}
+@media (max-width: 900px) {
+  .hero-mascot {
+    height: 105%;
+    right: -12%;
+    opacity: 0.7;
+  }
+}
+@media (max-width: 600px) {
+  .hero-mascot {
+    height: 78%;
+    right: -18%;
+    opacity: 0.35;
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.feedback-track::-webkit-scrollbar {
+  display: none;
+}
+
+
